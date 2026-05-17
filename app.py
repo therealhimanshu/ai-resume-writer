@@ -68,7 +68,7 @@ def tailor_resume(master_resume: str, job_description: str) -> str:
     {master_resume}
     ---
 
-    Provide the final tailored resume in clean Markdown format. 
+    Provide the final tailored resume in clean Markdown and overleaf .tex format same as the input resume. 
     At the absolute top, include a short 3-bullet block titled "🎯 ATS Alignment Summary" explaining exactly what keywords were matched and what strategic modifications were made.
     """
 
@@ -83,7 +83,7 @@ def tailor_resume(master_resume: str, job_description: str) -> str:
 
 # --- UI Layout ---
 st.title("💼 Personal AI Resume Tailor")
-st.caption("Instantly align your master resume with any job role using Gemini 2.5 Flash.")
+st.caption("Instantly align your master resume with any job role using Tailor AI, powered by Gemini 2.5 Flash.")
 
 st.markdown("---")
 
@@ -113,7 +113,7 @@ if st.button("🚀 Tailor My Resume", type="primary"):
     elif not jd_text.strip():
         st.warning("Please provide a valid job description or link.")
     else:
-        with st.spinner("Gemini is analyzing the JD and reframing your achievements..."):
+        with st.spinner("Tailor AI is analyzing the JD and reframing your resume..."):
             # Process PDF
             resume_content = extract_text_from_pdf(uploaded_resume)
             
@@ -122,7 +122,7 @@ if st.button("🚀 Tailor My Resume", type="primary"):
                 final_tailored_resume = tailor_resume(resume_content, jd_text)
                 
                 # Show Output
-                st.success("🎉 Done! Review your tailored resume below:")
+                st.success("🎉 Done! Review your tailored resume ( in markdown and latex format ) below:")
                 
                 # Download Button
                 st.download_button(
